@@ -10,6 +10,7 @@ import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/d
 })
 export class HomepageConfiguratorComponent {
 
+
   movies = [
     'Episode I - The Phantom Menace',
     'Episode II - Attack of the Clones',
@@ -21,6 +22,9 @@ export class HomepageConfiguratorComponent {
     'Episode VIII - The Last Jedi',
     'Episode IX – The Rise of Skywalker',
   ];
+
+ selectedOption: string = "Brand";
+
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);

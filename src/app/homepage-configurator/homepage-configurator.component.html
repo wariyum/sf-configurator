@@ -1,3 +1,9 @@
+<select class="form-select" [(ngModel)]="selectedOption">
+  <option value="Banner">Banner</option>
+  <option value="Category">Category</option>
+  <option value="Brand">Brand</option>
+  <option value="TopSelling">Top Selling</option>
+</select>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
     @for (movie of movies; track movie) {
       <div class="example-box" cdkDrag>{{movie}}</div>
