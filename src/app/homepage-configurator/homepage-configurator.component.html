@@ -5,8 +5,8 @@
   <option value="TopSelling">Top Selling</option>
 </select>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    @for (movie of movies; track movie) {
-      <div class="example-box" cdkDrag>{{movie}}</div>
+    @for (nearmeItem of nearmeItems; track nearmeItem) {
+      <div class="example-box" cdkDrag>{{nearmeItem}}</div>
     }
   </div>
   
