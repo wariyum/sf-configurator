@@ -1,6 +1,7 @@
-import {Component, signal} from '@angular/core';
-import {CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray} from '@angular/cdk/drag-drop';
+import { Component, signal } from '@angular/core';
+import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { HompageConfiguratorService } from './hompage-configurator.service';
 
 @Component({
   selector: 'app-homepage-configurator',
@@ -11,14 +12,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class HomepageConfiguratorComponent {
 
+  constructor(private homepageConfigService: HompageConfiguratorService) {
+    this.nearmeItems = this.homepageConfigService.sections;
+
+  }
+  nearmeItems: any[];
   selectedOption = signal<string>('Brand');
-  nearmeItems = [
-   'Banner1',"Category1"
-  ];
-
   isDragging = false;
-
-
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.nearmeItems, event.previousIndex, event.currentIndex);
@@ -39,6 +39,4 @@ export class HomepageConfiguratorComponent {
       this.isDragging = false;
     }, 0);
   }
-
-
 }
