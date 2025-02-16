@@ -1,22 +1,58 @@
+<!-- Main container with flex layout -->
+<div style="display: flex; justify-content: space-between;">
 
-
-<select class="form-select" [(ngModel)]="selectedOption">
-  <option value="Banner">Banner</option>
-  <option value="Category">Category</option>
-  <option value="Brand">Brand</option>
-  <option value="TopSelling">Top Selling</option>
-</select>
-<br/>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-    @for (nearmeItem of nearmeItems; track nearmeItem) {
-      <div class="example-box" 
-           cdkDrag 
-           (click)="showAlert(nearmeItem)"
-           (cdkDragStarted)="dragStarted()"
-           (cdkDragEnded)="dragEnded()">
+  <!-- Left section -->
+  <div>
+    <select class="form-select" [(ngModel)]="selectedOption">
+      <option value="Banner">Banner</option>
+      <option value="Category">Category</option>
+      <option value="Brand">Brand</option>
+      <option value="TopSelling">Top Selling</option>
+    </select>
+    <br />
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      @for (nearmeItem of nearmeItems; track nearmeItem) {
+      <div class="example-box" cdkDrag (click)="showAlert(nearmeItem)" (cdkDragStarted)="dragStarted()"
+        (cdkDragEnded)="dragEnded()">
         {{nearmeItem.name}}
       </div>
-    }
-</div>
+      }
+    </div>
+  </div>
 
-  
+  <!-- Right section -->
+  <div>
+    <div [ngSwitch]="selectedSection?.name">
+      <div *ngSwitchCase="'banner'">
+        <h3>Banner Section</h3>
+
+      </div>
+
+      <div *ngSwitchCase="'categories'">
+        <h3>Category Section</h3>
+        <div class="category-content">
+          <!-- Category content here -->
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'brands'">
+        <h3>Brand Section</h3>
+        <div class="brand-content">
+          <!-- Brand content here -->
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'topSelling'">
+        <h3>Top Selling Section</h3>
+        <div class="topselling-content">
+          <!-- Top selling content here -->
+        </div>
+      </div>
+
+      <div *ngSwitchDefault>
+        <h3>Please select a section</h3>
+      </div>
+    </div>
+  </div>
+
+</div>
