@@ -4,11 +4,17 @@
   <!-- Left section -->
   <div>
     <select class="form-select" [(ngModel)]="selectedOption">
-      <option value="Banner">Banner</option>
-      <option value="Category">Category</option>
-      <option value="Brand">Brand</option>
-      <option value="TopSelling">Top Selling</option>
+      <option value="banner">Banner</option>
+      <option value="categories">Category</option>
+      <option value="brands">Brand</option>
+      <option value="topSelling">Top Selling</option>
     </select>
+
+    <!-- add button -->
+<button class="btn btn-primary mt-2" (click)="addSection()">
+  <i class="fas fa-plus"></i> Add Section
+</button>     
+
     <br />
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
       @for (nearmeItem of nearmeItems; track nearmeItem) {

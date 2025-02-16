@@ -18,7 +18,7 @@ export class HomepageConfiguratorComponent {
     this.nearmeItems = this.homepageConfigService.sections;
   }
   nearmeItems: any[];
-  selectedOption = signal<string>('Brand');
+  selectedOption = 'brand';
   isDragging = false;
   selectedSection: Section| undefined;
 
@@ -41,5 +41,14 @@ export class HomepageConfiguratorComponent {
     setTimeout(() => {
       this.isDragging = false;
     }, 0);
+  }
+
+  /**
+   * based on selectedOption, will create a new object into nearmeItems
+   */
+  addSection(){
+    //based on selectedOption, get the type of section
+    //create a new object based on sectionType
+    this.homepageConfigService.addNewSection(this.selectedOption);
   }
 }
