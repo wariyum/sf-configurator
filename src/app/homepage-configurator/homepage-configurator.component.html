@@ -1,12 +1,22 @@
+
+
 <select class="form-select" [(ngModel)]="selectedOption">
   <option value="Banner">Banner</option>
   <option value="Category">Category</option>
   <option value="Brand">Brand</option>
   <option value="TopSelling">Top Selling</option>
 </select>
+<br/>
 <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
     @for (nearmeItem of nearmeItems; track nearmeItem) {
-      <div class="example-box" cdkDrag>{{nearmeItem}}</div>
+      <div class="example-box" 
+           cdkDrag 
+           (click)="showAlert(nearmeItem)"
+           (cdkDragStarted)="dragStarted()"
+           (cdkDragEnded)="dragEnded()">
+        {{nearmeItem}}
+      </div>
     }
-  </div>
+</div>
+
   

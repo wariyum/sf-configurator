@@ -16,10 +16,29 @@ export class HomepageConfiguratorComponent {
    'Banner1',"Category1"
   ];
 
+  isDragging = false;
+
 
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.nearmeItems, event.previousIndex, event.currentIndex);
   }
+
+  showAlert(item: string) {
+    if (!this.isDragging) {
+      alert(`You clicked: ${item}`);
+    }
+  }
+
+  dragStarted() {
+    this.isDragging = true;
+  }
+
+  dragEnded() {
+    setTimeout(() => {
+      this.isDragging = false;
+    }, 0);
+  }
+
 
 }
