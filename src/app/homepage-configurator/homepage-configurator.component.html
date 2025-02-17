@@ -28,11 +28,35 @@
 
   <!-- Right section -->
   <div>
-    <div [ngSwitch]="selectedSection?.name">
-      <div *ngSwitchCase="'banner'">
-        <h3>Banner Section</h3>
-
-      </div>
+    <div [ngSwitch]="bannerSection?.name">
+     <div *ngSwitchCase="'banner'">
+       <div class="banner-display">
+         <h3>Banner Section</h3>
+         <div class="banner-details" >
+           <div class="detail-row">
+             <span class="label">Banner ID:</span>
+             <span class="value">{{bannerSection?.bannerId}}</span>
+           </div>
+           <div class="detail-row">
+             <span class="label">Desktop Height:</span>
+             <span class="value">{{bannerSection?.desktopHeight}}</span>
+           </div>
+           <div class="detail-row">
+             <span class="label">Tablet Height:</span>
+             <span class="value">{{bannerSection?.TabletHeight}}</span>
+           </div>
+           <div class="detail-row">
+             <span class="label">Mobile Height:</span>
+             <span class="value">{{bannerSection?.mobileHeight}}</span>
+           </div>
+           <div class="detail-row">
+             <span class="label">Show By Device:</span>
+             <span class="value">{{bannerSection?.showByDeviceType ? 'Yes' : 'No'}}</span>
+           </div>
+         </div>
+       </div>
+     </div>
+     
 
       <div *ngSwitchCase="'categories'">
         <h3>Category Section</h3>

@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { HompageConfiguratorService } from './hompage-configurator.service';
-import { Section } from './homepageConfigurator.types';
+import { BannerSection, Section } from './homepageConfigurator.types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -21,6 +21,7 @@ export class HomepageConfiguratorComponent {
   selectedOption = 'brand';
   isDragging = false;
   selectedSection: Section| undefined;
+  bannerSection: BannerSection | undefined;
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.nearmeItems, event.previousIndex, event.currentIndex);
@@ -30,6 +31,15 @@ export class HomepageConfiguratorComponent {
     if (!this.isDragging) {
      //selectedSection should from the item
      this.selectedSection = item;
+     //get the type of section
+     const sectionType = this.homepageConfigService.getSectionType(item);
+     switch (sectionType) {
+      case 'banner':
+        this.bannerSection = item as BannerSection;
+        break;
+      default:
+        break;
+     }
     }
   }
 
@@ -51,4 +61,9 @@ export class HomepageConfiguratorComponent {
     //create a new object based on sectionType
     this.homepageConfigService.addNewSection(this.selectedOption);
   }
+
+   // Type guard for BannerSection
+  //  isBannerSection(section: Section): section is BannerSection {
+  //   return section.name === 'banner';
+  // }
 }
